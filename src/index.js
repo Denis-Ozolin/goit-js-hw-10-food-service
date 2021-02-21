@@ -1,5 +1,13 @@
 import './styles.css';
 
-const test = document.querySelector('body');
+const bodyRef = document.querySelector('body');
 
-test.style.backgroundColor = 'red';
+bodyRef.classList.add('light-theme');
+
+const checkboxRef = document.querySelector('#theme-switch-toggle');
+
+checkbox.addEventListener('change', () => {
+  bodyRef.classList.add('dark-theme');
+});
+  
+
