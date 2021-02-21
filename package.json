@@ -1,0 +1,20 @@
+{
+"name": "goit-js-hw-10-food-service",
+"version": "1.0.0",
+"main": "index.js",
+"scripts": {
+   "hi": "node index.js"
+},
+"repository": {
+   "type": "git",
+   "url": "git+https://github.com/Denis-Ozolin/goit-js-hw-10-food-service.git"
+},
+"keywords": [],
+"author": "Denis-Ozolin <ozolindenx@gmail.com>",
+"license": "ISC",
+"bugs": {
+   "url": "https://github.com/Denis-Ozolin/goit-js-hw-10-food-service/issues"
+},
+"homepage": "https://github.com/Denis-Ozolin/goit-js-hw-10-food-service#readme",
+"description": ""
+}
