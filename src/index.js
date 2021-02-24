@@ -1,3 +1,11 @@
+import menuTemplate from './menu-template.hbs';
+import menuList from './menu.json';
+
+const menuMarkup = menuTemplate(menuList)
+const menuRef = document.querySelector('ul.js-menu');
+
+menuRef.insertAdjacentHTML("beforeend", menuMarkup);
+// ------------------------------------------------------
 import './styles.css';
 
 const Theme = {
@@ -7,32 +15,31 @@ const Theme = {
 
 const bodyRef = document.querySelector('body');
 const checkboxRef = document.querySelector('#theme-switch-toggle');
-const menuRef = document.querySelector('ul.js-menu');
 
-// menuRef.insertAdjacentHTML('beforeend', string);
 const localTStorageTheme = localStorage.getItem('theme');
 const theme = JSON.parse(localTStorageTheme);
 bodyRef.classList.toggle(theme);
 
-const localCheckValue = localStorage.getItem('checked');
-const checkValue = JSON.parse(localCheckValue);
+// const localCheckValue = localStorage.getItem('checked');
+// const checkValue = JSON.parse(localCheckValue);
 
-checkboxRef.value = checkValue;
+// checkboxRef.value = checkValue;
 
-checkboxRef.addEventListener('change', () => {
+checkboxRef.addEventListener('change', (event) => {
+  event.preventDefault();
   bodyRef.classList.toggle(Theme.LIGHT);
   bodyRef.classList.toggle(Theme.DARK);
 
   if(bodyRef.classList.contains(Theme.DARK)){
-    checkboxRef.value = true;
+    // checkboxRef.value = true;
 
     localStorage.setItem('theme', JSON.stringify(Theme.DARK));
-    localStorage.setItem('checked', JSON.stringify(checkboxRef.value));
+    // localStorage.setItem('checked', JSON.stringify(checkboxRef.value));
 
     
   } else {
     localStorage.setItem('theme', JSON.stringify(Theme.LIGHT));
-    localStorage.setItem('checked', JSON.stringify(!checkboxRef.value));
+    // localStorage.setItem('checked', JSON.stringify(!checkboxRef.value));
 
   }
 });
