@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./index.js"],"names":["document","querySelector","style","backgroundColor"],"mappings":"kHAAA,iBAEaA,SAASC,cAAc,QAE/BC,MAAMC,gBAAkB,Q","file":"main.16ea00e637829a3aa19b.js","sourcesContent":["import './styles.css';\n\nconst test = document.querySelector('body');\n\ntest.style.backgroundColor = 'red';"],"sourceRoot":""}
