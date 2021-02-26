@@ -1,39 +1,37 @@
 import './styles.css';
 import menuMarkup from './templating.js';
-
-const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
-};
-
-const {LIGHT, DARK} = Theme;
+import theme from './theme';
 
 const bodyRef = document.querySelector('body');
 const checkboxRef = document.querySelector('#theme-switch-toggle');
 const menuRef = document.querySelector('ul.js-menu');
 
-menuRef.insertAdjacentHTML("beforeend", menuMarkup);
+const darkThemeLS = JSON.stringify(theme.DARK);
+const lightThemeLS = JSON.stringify(theme.LIGHT);
+const currentThemeLS = localStorage.getItem('theme');
 
-const darkThemeLS = JSON.stringify(DARK);
-const lightThemeLS = JSON.stringify(LIGHT);
-const currentThemeLS = JSON.parse(localStorage.getItem('theme'));
-console.log(currentThemeLS);
+function onCurrentThemeBody(){
+  bodyRef.classList.add(JSON.parse(currentThemeLS));
+    if(currentThemeLS === darkThemeLS){
+      checkboxRef.checked = true;
+    }
+}
 
-
-bodyRef.classList.add(currentThemeLS);
-
-
-checkboxRef.addEventListener('change', (event) => {
+function onSwitchThemeBody(event){
   event.preventDefault();
 
-  bodyRef.classList.toggle(LIGHT);
-  bodyRef.classList.toggle(DARK);
+  bodyRef.classList.toggle(theme.LIGHT);
+  bodyRef.classList.toggle(theme.DARK);
 
-  if(bodyRef.classList.contains(DARK)){
+  if(bodyRef.classList.contains(theme.DARK)){
     localStorage.setItem('theme', darkThemeLS);  
   } else {
     localStorage.setItem('theme', lightThemeLS);
   }
-});
+}
+
+menuRef.insertAdjacentHTML("beforeend", menuMarkup);
+onCurrentThemeBody();
+checkboxRef.addEventListener('change', onSwitchThemeBody);
 
 
