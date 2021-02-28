@@ -5,28 +5,23 @@ import theme from './theme';
 const bodyRef = document.querySelector('body');
 const checkboxRef = document.querySelector('#theme-switch-toggle');
 const menuRef = document.querySelector('ul.js-menu');
-
-const darkThemeLS = JSON.stringify(theme.DARK);
-const lightThemeLS = JSON.stringify(theme.LIGHT);
-const currentThemeLS = localStorage.getItem('theme');
+const currentTheme = localStorage.getItem('theme') || theme.LIGHT;
 
 function onCurrentThemeBody(){
-  bodyRef.classList.add(JSON.parse(currentThemeLS));
-    if(currentThemeLS === darkThemeLS){
+  bodyRef.classList.add(currentTheme);
+    if(currentTheme === theme.DARK){
       checkboxRef.checked = true;
     }
 }
 
-function onSwitchThemeBody(event){
-  event.preventDefault();
-
+function onSwitchThemeBody(){
   bodyRef.classList.toggle(theme.LIGHT);
   bodyRef.classList.toggle(theme.DARK);
 
   if(bodyRef.classList.contains(theme.DARK)){
-    localStorage.setItem('theme', darkThemeLS);  
+    localStorage.setItem('theme', theme.DARK);  
   } else {
-    localStorage.setItem('theme', lightThemeLS);
+    localStorage.setItem('theme', theme.LIGHT);
   }
 }
 
